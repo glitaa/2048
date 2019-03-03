@@ -25,7 +25,7 @@ var fieldsInRow = 4;
 var fieldLength;
 var tiles;
 var leftPressed, rightPressed, upPressed, downPressed;
-var speed = fieldLength/4;
+var speed = 4;
 var counter = 0;
 var somethingChanged;
 
@@ -74,25 +74,25 @@ function moveEverything() {
 	for (var i = 0; i<fieldsInRow; i++) {
 		for (var j = 0; j<fieldsInRow; j++) {
 			if (tiles[i][j].getXSpeed()<0)
-				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/4);
+				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/speed);
 		}
 	}
 	for (var i = 0; i<fieldsInRow; i++) {
 		for (var j = 0; j<fieldsInRow; j++) {
 			if (tiles[i][j].getXSpeed()>0)
-				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/4);
+				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/speed);
 		}
 	}
 	for (var i = 0; i<fieldsInRow; i++) {
 		for (var j = 0; j<fieldsInRow; j++) {
 			if (tiles[i][j].getYSpeed()<0)
-				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed()-fieldLength/4);
+				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed()-fieldLength/speed);
 		}
 	}
 	for (var i = 0; i<fieldsInRow; i++) {
 		for (var j = 0; j<fieldsInRow; j++) {
 			if (tiles[i][j].getYSpeed()<0)
-				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed()+fieldLength/4);
+				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed()+fieldLength/speed);
 		}
 	}
 
@@ -108,7 +108,7 @@ function moveEverything() {
 					if (tiles[i-1][j].getValue() == tiles[i][j].getValue()) { //the tile on the left has got the same value (merging)
 						if (tiles[i][j].getTempX() == 0)
 							tiles[i][j].setTempX(margin+innerMargin+tiles[i][j].getX()*fieldLength);
-						tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/4);
+						tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/speed);
 						if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()<=tiles[i][j].getTempX()-fieldLength) {
 							tiles[i-1][j].setValue(tiles[i-1][j].getValue()*2);
 							tiles[i][j].setValue(0);
@@ -120,7 +120,7 @@ function moveEverything() {
 				} else { //there isn't a tile on the left
 					if (tiles[i][j].getTempX() == 0)
 						tiles[i][j].setTempX(margin+innerMargin+tiles[i][j].getX()*fieldLength);
-					tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/4);
+					tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/speed);
 					if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()<=tiles[i][j].getTempX()-fieldLength) {
 						tiles[i][j].setXSpeed(0);
 						tiles[i-1][j].setValue(tiles[i][j].getValue());
@@ -158,7 +158,7 @@ function moveEverything() {
 					if (tiles[i+1][j].getValue() == tiles[i][j].getValue()) { //the tile on the right has got the same value (merging)
 						if (tiles[i][j].getTempX() == 0)
 							tiles[i][j].setTempX(margin+innerMargin+tiles[i][j].getX()*fieldLength);
-						tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/4);
+						tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/speed);
 						if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()>=tiles[i][j].getTempX()+fieldLength) {
 							tiles[i+1][j].setValue(tiles[i+1][j].getValue()*2);
 							tiles[i][j].setValue(0);
@@ -170,7 +170,7 @@ function moveEverything() {
 				} else { //there isn't a tile on the right
 					if (tiles[i][j].getTempX() == 0)
 						tiles[i][j].setTempX(margin+innerMargin+tiles[i][j].getX()*fieldLength);
-					tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/4);
+					tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/speed);
 					if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()>=tiles[i][j].getTempX()+fieldLength) {
 						tiles[i][j].setXSpeed(0);
 						tiles[i+1][j].setValue(tiles[i][j].getValue());
@@ -208,7 +208,7 @@ function moveEverything() {
 					if (tiles[j][i-1].getValue() == tiles[j][i].getValue()) { //the tile on the top has got the same value (merging)
 						if (tiles[j][i].getTempY() == 0)
 							tiles[j][i].setTempY(margin+innerMargin+tiles[j][i].getY()*fieldLength);
-						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()-fieldLength/4);
+						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()-fieldLength/speed);
 						if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()<=tiles[j][i].getTempY()-fieldLength) {
 							tiles[j][i-1].setValue(tiles[j][i-1].getValue()*2);
 							tiles[j][j].setValue(0);
@@ -220,7 +220,7 @@ function moveEverything() {
 				} else { //there isn't a tile on the top
 					if (tiles[j][i].getTempY() == 0)
 						tiles[j][i].setTempY(margin+innerMargin+tiles[j][i].getY()*fieldLength);
-					tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()-fieldLength/4);
+					tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()-fieldLength/speed);
 					if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()<=tiles[j][i].getTempY()-fieldLength) {
 						tiles[j][i].setYSpeed(0);
 						tiles[j][i-1].setValue(tiles[j][i].getValue());
@@ -258,7 +258,7 @@ function moveEverything() {
 					if (tiles[j][i+1].getValue() == tiles[j][i].getValue()) { //the tile on the bottom has got the same value (merging)
 						if (tiles[j][i].getTempY() == 0)
 							tiles[j][i].setTempY(margin+innerMargin+tiles[j][i].getY()*fieldLength);
-						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()+fieldLength/4);
+						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()+fieldLength/speed);
 						if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()>=tiles[j][i].getTempY()+fieldLength) {
 							tiles[j][i+1].setValue(tiles[j][i+1].getValue()*2);
 							tiles[j][j].setValue(0);
@@ -270,7 +270,7 @@ function moveEverything() {
 				} else { //there isn't a tile on the bottom
 					if (tiles[j][i].getTempY() == 0)
 						tiles[j][i].setTempY(margin+innerMargin+tiles[j][i].getY()*fieldLength);
-					tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()+fieldLength/4);
+					tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()+fieldLength/speed);
 					if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()>=tiles[j][i].getTempY()+fieldLength) {
 						tiles[j][i].setYSpeed(0);
 						tiles[j][i+1].setValue(tiles[j][i].getValue());
