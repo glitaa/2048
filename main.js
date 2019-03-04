@@ -10,11 +10,14 @@ var leftPressed, rightPressed, upPressed, downPressed;
 var speed = 4;
 var counter = 0;
 var somethingChanged;
+var backgroundColor = "#fff2e6";
 var boardLength;
 
 window.onload = function() {
 	canvasSetup();
 	
+	document.body.style.backgroundColor = backgroundColor;
+
 	tilesArrayInit();
 
 	drawNewTile(2);
@@ -242,6 +245,8 @@ function moveEverything() {
 }
 
 function drawEverything() {
+	drawBackground();
+
 	drawBoard();
 
 	drawFields();
@@ -337,6 +342,11 @@ function updateVariables() {
 
 	margin = maxLength/20;
 	innerMargin = maxLength/60;
+}
+
+function drawBackground() {
+	canvasCtx.fillStyle = backgroundColor;
+	canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawBoard() {
