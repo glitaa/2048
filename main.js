@@ -10,6 +10,7 @@ var leftPressed, rightPressed, upPressed, downPressed;
 var speed = 4;
 var counter = 0;
 var somethingChanged;
+var boardLength;
 
 window.onload = function() {
 	canvasSetup();
@@ -341,7 +342,7 @@ function updateVariables() {
 function drawBoard() {
 	canvasCtx.fillStyle = "grey";
 	canvasCtx.fillRect(0 + margin, 0 + margin, maxLength - 2 * margin, maxLength - 2 * margin);
-	var boardLength = maxLength - (2 * margin);
+	boardLength = maxLength - (2 * margin);
 }
 
 function drawFields() {
