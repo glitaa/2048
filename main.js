@@ -12,35 +12,17 @@ var counter = 0;
 var somethingChanged;
 
 window.onload = function() {
-	canvas = document.getElementById('gameCanvas');
-	canvasCtx = canvas.getContext('2d');
+	canvasSetup();
 	
-	tiles = [];	
-	for(var i = 0; i<fieldsInRow; i++)
-		tiles[i] = [];
-	for(var i = 0; i<fieldsInRow; i++) {
-		for(var j = 0; j<fieldsInRow; j++)
-			tiles[i][j] = new Tile();
-	}
+	tilesArrayInit();
 
 	drawNewTile(2);
 
-	var fps = 60;
-	setInterval(update, 1000/fps);
+	setAndInitInterval();
 }
 
 function update() {
-	//update variables
-	if(document.body.clientWidth>=document.body.clientHeight)
-		maxLength = document.body.clientHeight;
-	else 
-		maxLength = document.body.clientWidth;
-
-	canvas.width = maxLength;
-	canvas.height = maxLength;
-
-	margin = maxLength/20;
-	innerMargin = maxLength/60;
+	updateVariables();
 
 	drawEverything(); //drawing function
 	moveEverything(); //moving function
@@ -53,30 +35,7 @@ function update() {
 }
 
 function moveEverything() {
-	for (var i = 0; i<fieldsInRow; i++) {
-		for (var j = 0; j<fieldsInRow; j++) {
-			if (tiles[i][j].getXSpeed()<0)
-				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/speed);
-		}
-	}
-	for (var i = 0; i<fieldsInRow; i++) {
-		for (var j = 0; j<fieldsInRow; j++) {
-			if (tiles[i][j].getXSpeed()>0)
-				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/speed);
-		}
-	}
-	for (var i = 0; i<fieldsInRow; i++) {
-		for (var j = 0; j<fieldsInRow; j++) {
-			if (tiles[i][j].getYSpeed()<0)
-				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed()-fieldLength/speed);
-		}
-	}
-	for (var i = 0; i<fieldsInRow; i++) {
-		for (var j = 0; j<fieldsInRow; j++) {
-			if (tiles[i][j].getYSpeed()<0)
-				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed()+fieldLength/speed);
-		}
-	}
+	updateTileSpeed();
 
 	if (leftPressed) {
 		for (var i = 0; i<fieldsInRow; i++) {
@@ -266,8 +225,8 @@ function moveEverything() {
 			}
 		}}
 
-		if (counter < 16) {
-			if (counter+1 == 16) {
+		if (counter < speed*fieldsInRow) {
+			if (counter+1 == speed*fieldsInRow) {
 				counter = 0;
 				downPressed = false;
 				if (somethingChanged) {
@@ -282,27 +241,11 @@ function moveEverything() {
 }
 
 function drawEverything() {
-	//draw board
-	canvasCtx.fillStyle = "grey";
-	canvasCtx.fillRect(0+margin, 0+margin, maxLength-2*margin, maxLength-2*margin);
-	var boardLength = maxLength-(2*margin);
+	drawBoard();
 
-	//draw fields
-	fieldLength = (boardLength-innerMargin)/fieldsInRow;
-	canvasCtx.fillStyle = "white";
-	for(var i = 0; i<fieldsInRow; i++) {
-		for(var j = 0; j<fieldsInRow; j++) {
-			canvasCtx.fillRect(margin+innerMargin+i*(fieldLength), margin+innerMargin+j*(fieldLength), fieldLength-innerMargin, fieldLength-innerMargin);
-		}
-	}
+	drawFields();
 
-	//draw tiles
-	for(var i = 0; i<fieldsInRow; i++) {
-		for(var j = 0; j<fieldsInRow; j++) {
-			if(tiles[i][j].getValue()>0) 
-				tiles[i][j].drawTile();
-		}
-	}
+	drawTiles();
 }
 
 function drawNewTile(numberOfTiles) {
@@ -318,6 +261,104 @@ function drawNewTile(numberOfTiles) {
 		tiles[x][y].setY(y);
 		tiles[x][y].setValue(2);
 	}
+}
+
+function updateTileSpeed() {
+	subtractFromXSpeedIfIsNegative();
+	addToXSpeedIfIsPositive();
+	subtractFromYSpeedIfIsNegative();
+	addToYSpeedIfIsPositive();
+}
+
+function subtractFromXSpeedIfIsNegative() {
+	for (var i = 0; i < fieldsInRow; i++) {
+		for (var j = 0; j < fieldsInRow; j++) {
+			if (tiles[i][j].getXSpeed() < 0)
+				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed() - fieldLength / speed);
+		}
+	}
+}
+
+function addToXSpeedIfIsPositive() {
+	for (var i = 0; i < fieldsInRow; i++) {
+		for (var j = 0; j < fieldsInRow; j++) {
+			if (tiles[i][j].getXSpeed() > 0)
+				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed() + fieldLength / speed);
+		}
+	}
+}
+
+function subtractFromYSpeedIfIsNegative() {
+	for (var i = 0; i < fieldsInRow; i++) {
+		for (var j = 0; j < fieldsInRow; j++) {
+			if (tiles[i][j].getYSpeed() < 0)
+				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed() - fieldLength / speed);
+		}
+	}
+}
+
+function addToYSpeedIfIsPositive() {
+	for (var i = 0; i < fieldsInRow; i++) {
+		for (var j = 0; j < fieldsInRow; j++) {
+			if (tiles[i][j].getYSpeed() < 0)
+				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed() + fieldLength / speed);
+		}
+	}
+}
+
+function canvasSetup() {
+	canvas = document.getElementById('gameCanvas');
+	canvasCtx = canvas.getContext('2d');
+}
+
+function tilesArrayInit() {
+	tiles = [];	
+	for(var i = 0; i<fieldsInRow; i++)
+		tiles[i] = [];
+	for(var i = 0; i<fieldsInRow; i++) {
+		for(var j = 0; j<fieldsInRow; j++)
+			tiles[i][j] = new Tile();
+	}
+}
+
+function setAndInitInterval() {
+	var fps = 60;
+	setInterval(update, 1000 / fps);
+}
+
+function updateVariables() {
+	if (document.body.clientWidth >= document.body.clientHeight)
+		maxLength = document.body.clientHeight;
+	else
+		maxLength = document.body.clientWidth;
+	canvas.width = maxLength;
+	canvas.height = maxLength;
+
+	margin = maxLength/20;
+	innerMargin = maxLength/60;
+}
+
+function drawBoard() {
+	canvasCtx.fillStyle = "grey";
+	canvasCtx.fillRect(0 + margin, 0 + margin, maxLength - 2 * margin, maxLength - 2 * margin);
+	var boardLength = maxLength - (2 * margin);
+}
+
+function drawFields() {
+	fieldLength = (boardLength - innerMargin) / fieldsInRow;
+	canvasCtx.fillStyle = "white";
+	for (var i = 0; i < fieldsInRow; i++) {
+	for (var j = 0; j < fieldsInRow; j++) {
+			canvasCtx.fillRect(margin + innerMargin + i * (fieldLength), margin + innerMargin + j * (fieldLength), fieldLength - innerMargin, fieldLength - innerMargin);
+	}}
+}
+
+function drawTiles() {
+	for (var i = 0; i < fieldsInRow; i++) {
+	for (var j = 0; j < fieldsInRow; j++) {
+			if (tiles[i][j].getValue() > 0)
+				tiles[i][j].drawTile();
+	}}
 }
 
 document.addEventListener('keydown', function(event) {
