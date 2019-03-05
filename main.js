@@ -341,7 +341,7 @@ function drawBoard() {
 
 function drawFields() {
 	fieldLength = (boardLength - innerMargin) / fieldsInRow;
-	canvasCtx.fillStyle = "white";
+	canvasCtx.fillStyle = backgroundColor;
 	for (var i = 0; i < fieldsInRow; i++) {
 	for (var j = 0; j < fieldsInRow; j++) {
 			canvasCtx.fillRect(margin + innerMargin + i * (fieldLength), margin + innerMargin + j * (fieldLength), fieldLength - innerMargin, fieldLength - innerMargin);
