@@ -193,7 +193,6 @@ function drawEverything() {
 }
 
 function drawNewTile(numberOfTiles) {
-	//add randomness
 	for(var i = 0; i<numberOfTiles; i++) {
 		let x = Math.floor(Math.random() * fieldsInRow);
 		let y = Math.floor(Math.random() * fieldsInRow);
@@ -203,7 +202,7 @@ function drawNewTile(numberOfTiles) {
 		}
 		tiles[x][y].setX(x);
 		tiles[x][y].setY(y);
-		tiles[x][y].setValue(2);
+		tiles[x][y].setValue(Math.random() < 0.8 ? 2 : 4);
 	}
 }
 
