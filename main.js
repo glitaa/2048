@@ -142,7 +142,7 @@ function moveEverything() {
 			counter++;
 		}
 	} else if (upPressed) {
-		for (var i = fieldsInRow-1; i>-1; i--) {
+		for (var i = 0; i<fieldsInRow; i++) {
 		for (var j = 0; j<fieldsInRow; j++) {
 			if (tiles[j][i].getValue() > 0) {
 				if (i-1 < 0) //there's a wall on the top
@@ -192,7 +192,7 @@ function moveEverything() {
 			counter++;
 		}
 	} else if (downPressed) {
-		for (var i = 0; i<fieldsInRow; i++) {
+		for (var i = fieldsInRow-1; i>-1; i--) {
 		for (var j = 0; j<fieldsInRow; j++) {
 			if (tiles[j][i].getValue() > 0) {
 				if (i+1 > fieldsInRow-1) //there's a wall on the bottom
