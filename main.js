@@ -1,7 +1,5 @@
-var canvas;
-var canvasCtx;
-var margin;
-var innerMargin;
+var canvas, canvasCtx;
+var margin, innerMargin;
 var maxLength;
 var fieldsInRow = 4;
 var fieldLength;
