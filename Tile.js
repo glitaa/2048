@@ -50,6 +50,15 @@ class Tile {
 	setTempY(newTempY) {
 		this.tempY = newTempY;
 	}
+	clear() {
+		this.x = 0;
+		this.y = 0;
+		this.xSpeed = 0;
+		this.ySpeed = 0;
+		this.value = 0;
+		this.tempX = 0;
+		this.tempY = 0;
+	}
 	drawTile() {
 		switch (this.value) {
 			case 2:

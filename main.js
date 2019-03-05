@@ -56,9 +56,7 @@ function moveEverything() {
 						tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/speed);
 						if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()<=tiles[i][j].getTempX()-fieldLength) {
 							tiles[i-1][j].setValue(tiles[i-1][j].getValue()*2);
-							tiles[i][j].setValue(0);
-							tiles[i][j].setTempX(0);
-							tiles[i][j].setXSpeed(0);
+							tiles[i][j].clear();
 							somethingChanged = true;
 						}
 					}
@@ -67,12 +65,10 @@ function moveEverything() {
 						tiles[i][j].setTempX(margin+innerMargin+tiles[i][j].getX()*fieldLength);
 					tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()-fieldLength/speed);
 					if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()<=tiles[i][j].getTempX()-fieldLength) {
-						tiles[i][j].setXSpeed(0);
 						tiles[i-1][j].setValue(tiles[i][j].getValue());
 						tiles[i-1][j].setX(tiles[i][j].getX()-1);
 						tiles[i-1][j].setY(tiles[i][j].getY());
-						tiles[i][j].setValue(0);
-						tiles[i][j].setTempX(0);
+						tiles[i][j].clear();
 						somethingChanged = true;
 					}
 				} 
@@ -106,9 +102,7 @@ function moveEverything() {
 						tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/speed);
 						if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()>=tiles[i][j].getTempX()+fieldLength) {
 							tiles[i+1][j].setValue(tiles[i+1][j].getValue()*2);
-							tiles[i][j].setValue(0);
-							tiles[i][j].setTempX(0);
-							tiles[i][j].setXSpeed(0);
+							tiles[i][j].clear();
 							somethingChanged = true;
 						}
 					}
@@ -117,12 +111,10 @@ function moveEverything() {
 						tiles[i][j].setTempX(margin+innerMargin+tiles[i][j].getX()*fieldLength);
 					tiles[i][j].setXSpeed(tiles[i][j].getXSpeed()+fieldLength/speed);
 					if (margin+innerMargin+tiles[i][j].getX()*fieldLength+tiles[i][j].getXSpeed()>=tiles[i][j].getTempX()+fieldLength) {
-						tiles[i][j].setXSpeed(0);
 						tiles[i+1][j].setValue(tiles[i][j].getValue());
 						tiles[i+1][j].setX(tiles[i][j].getX()+1);
 						tiles[i+1][j].setY(tiles[i][j].getY());
-						tiles[i][j].setValue(0);
-						tiles[i][j].setTempX(0);
+						tiles[i][j].clear();
 						somethingChanged = true;
 					}
 				} 
@@ -156,9 +148,7 @@ function moveEverything() {
 						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()-fieldLength/speed);
 						if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()<=tiles[j][i].getTempY()-fieldLength) {
 							tiles[j][i-1].setValue(tiles[j][i-1].getValue()*2);
-							tiles[j][j].setValue(0);
-							tiles[j][i].setTempY(0);
-							tiles[j][i].setYSpeed(0);
+							tiles[j][j].clear();
 							somethingChanged = true;
 						}
 					}
@@ -167,12 +157,10 @@ function moveEverything() {
 						tiles[j][i].setTempY(margin+innerMargin+tiles[j][i].getY()*fieldLength);
 					tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()-fieldLength/speed);
 					if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()<=tiles[j][i].getTempY()-fieldLength) {
-						tiles[j][i].setYSpeed(0);
 						tiles[j][i-1].setValue(tiles[j][i].getValue());
 						tiles[j][i-1].setX(tiles[j][i].getX());
 						tiles[j][i-1].setY(tiles[j][i].getY()-1);
-						tiles[j][i].setValue(0);
-						tiles[j][i].setTempY(0);
+						tiles[j][i].clear();
 						somethingChanged = true;
 					}
 				} 
@@ -206,9 +194,7 @@ function moveEverything() {
 						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()+fieldLength/speed);
 						if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()>=tiles[j][i].getTempY()+fieldLength) {
 							tiles[j][i+1].setValue(tiles[j][i+1].getValue()*2);
-							tiles[j][j].setValue(0);
-							tiles[j][i].setTempY(0);
-							tiles[j][i].setYSpeed(0);
+							tiles[j][j].clear();
 							somethingChanged = true;
 						}
 					}
@@ -217,12 +203,10 @@ function moveEverything() {
 						tiles[j][i].setTempY(margin+innerMargin+tiles[j][i].getY()*fieldLength);
 					tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()+fieldLength/speed);
 					if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()>=tiles[j][i].getTempY()+fieldLength) {
-						tiles[j][i].setYSpeed(0);
 						tiles[j][i+1].setValue(tiles[j][i].getValue());
 						tiles[j][i+1].setX(tiles[j][i].getX());
 						tiles[j][i+1].setY(tiles[j][i].getY()+1);
-						tiles[j][i].setValue(0);
-						tiles[j][i].setTempY(0);
+						tiles[j][i].clear();
 						somethingChanged = true;
 					}
 				} 
