@@ -75,18 +75,7 @@ function moveEverything() {
 			}
 		}}
 
-		if (counter < 16) {
-			if (counter+1 == 16) {
-				counter = 0;
-				leftPressed = false;
-				if (somethingChanged) {
-					drawNewTile(1);
-					somethingChanged = false;
-				}
-			}
-
-			counter++;
-		}
+		leftPressed = callCounter();
 	} else if (rightPressed) {
 		for (var i = fieldsInRow-1; i>-1; i--) {
 		for (var j = 0; j<fieldsInRow; j++) {
@@ -121,18 +110,7 @@ function moveEverything() {
 			}
 		}}
 
-		if (counter < 16) {
-			if (counter+1 == 16) {
-				counter = 0;
-				rightPressed = false;
-				if (somethingChanged) {
-					drawNewTile(1);
-					somethingChanged = false;
-				}
-			}
-
-			counter++;
-		}
+		rightPressed = callCounter();
 	} else if (upPressed) {
 		for (var i = 0; i<fieldsInRow; i++) {
 		for (var j = 0; j<fieldsInRow; j++) {
@@ -167,18 +145,7 @@ function moveEverything() {
 			}
 		}}
 
-		if (counter < 16) {
-			if (counter+1 == 16) {
-				counter = 0;
-				upPressed = false;
-				if (somethingChanged) {
-					drawNewTile(1);
-					somethingChanged = false;
-				}
-			}
-
-			counter++;
-		}
+		upPressed = callCounter();
 	} else if (downPressed) {
 		for (var i = fieldsInRow-1; i>-1; i--) {
 		for (var j = 0; j<fieldsInRow; j++) {
@@ -213,18 +180,7 @@ function moveEverything() {
 			}
 		}}
 
-		if (counter < speed*fieldsInRow) {
-			if (counter+1 == speed*fieldsInRow) {
-				counter = 0;
-				downPressed = false;
-				if (somethingChanged) {
-					drawNewTile(1);
-					somethingChanged = false;
-				}
-			}
-
-			counter++;
-		}
+		downPressed = callCounter();
 	}
 }
 
@@ -293,6 +249,21 @@ function addToYSpeedIfIsPositive() {
 			if (tiles[i][j].getYSpeed() < 0)
 				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed() + fieldLength / speed);
 		}
+	}
+}
+
+function callCounter() {
+	if (counter < speed*fieldsInRow) {
+		if (counter + 1 == speed*fieldsInRow) {
+			counter = 0;
+			if (somethingChanged) {
+				drawNewTile(1);
+				somethingChanged = false;
+			}
+			return false;
+		}
+		counter++;
+		return true;
 	}
 }
 
