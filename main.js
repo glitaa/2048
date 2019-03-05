@@ -289,8 +289,8 @@ function updateVariables() {
 		maxLength = document.body.clientHeight;
 	else
 		maxLength = document.body.clientWidth;
-	canvas.width = maxLength;
-	canvas.height = maxLength;
+	canvas.width = document.body.clientWidth;
+	canvas.height = document.body.clientHeight;
 
 	margin = maxLength/20;
 	innerMargin = maxLength/60;
