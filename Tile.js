@@ -90,6 +90,6 @@ class Tile {
 		canvasCtx.font = 56 / this.value.toString().length * (maxLength/600) + "px Verdana";
 		canvasCtx.fillStyle = "black";
 		canvasCtx.textAlign = "center";
-		canvasCtx.fillText(this.value, boardX + innerMargin + this.x * fieldLength + (fieldLength - innerMargin) / 2 + this.xSpeed, boardY + innerMargin + this.y * fieldLength + (fieldLength - innerMargin) / 2 + maxLength / 36 + this.ySpeed);
+		canvasCtx.fillText(this.value, boardX + innerMargin + this.x * fieldLength + (fieldLength - innerMargin) / 2 + this.xSpeed, boardY + innerMargin + this.y * fieldLength + (fieldLength - innerMargin) / 2 + maxLength / 30 + this.ySpeed);
 	}
 }
