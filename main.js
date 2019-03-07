@@ -31,7 +31,7 @@ function update() {
 
 	/*for (var i = 0; i<fieldsInRow; i++) {
 	for (var j = 0; j<fieldsInRow; j++) {
-		console.log("x, y: "+tiles[i][j].getX()+", "+tiles[i][j].getY()+"; i, j: "+i+", "+j+"; value: "+tiles[i][j].getValue()+"; xSpeed: "+tiles[i][j].getXSpeed());
+		console.log("x, y: "+tiles[i][j].getX()+", "+tiles[i][j].getY()+"; i, j: "+i+", "+j+"; value: "+tiles[i][j].getValue()+"; xSpeed: "+tiles[i][j].getXSpeed()+"; ySpeed: "+tiles[i][j].getYSpeed());
 	}}
 	console.log("\n");*/
 }
@@ -124,7 +124,7 @@ function moveEverything() {
 						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()-fieldLength/speed);
 						if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()<=tiles[j][i].getTempY()-fieldLength) {
 							tiles[j][i-1].setValue(tiles[j][i-1].getValue()*2);
-							tiles[j][j].clear();
+							tiles[j][i].clear();
 							somethingChanged = true;
 						}
 					}
@@ -159,7 +159,7 @@ function moveEverything() {
 						tiles[j][i].setYSpeed(tiles[j][i].getYSpeed()+fieldLength/speed);
 						if (margin+innerMargin+tiles[j][i].getY()*fieldLength+tiles[j][i].getYSpeed()>=tiles[j][i].getTempY()+fieldLength) {
 							tiles[j][i+1].setValue(tiles[j][i+1].getValue()*2);
-							tiles[j][j].clear();
+							tiles[j][i].clear();
 							somethingChanged = true;
 						}
 					}
