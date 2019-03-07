@@ -13,7 +13,7 @@ var boardLength;
 
 window.onload = function() {
 	canvasSetup();
-	
+
 	document.body.style.backgroundColor = backgroundColor;
 
 	tilesArrayInit();
@@ -69,7 +69,7 @@ function moveEverything() {
 						tiles[i][j].clear();
 						somethingChanged = true;
 					}
-				} 
+				}
 			}
 		}}
 
@@ -104,7 +104,7 @@ function moveEverything() {
 						tiles[i][j].clear();
 						somethingChanged = true;
 					}
-				} 
+				}
 			}
 		}}
 
@@ -139,7 +139,7 @@ function moveEverything() {
 						tiles[j][i].clear();
 						somethingChanged = true;
 					}
-				} 
+				}
 			}
 		}}
 
@@ -174,7 +174,7 @@ function moveEverything() {
 						tiles[j][i].clear();
 						somethingChanged = true;
 					}
-				} 
+				}
 			}
 		}}
 
@@ -270,7 +270,7 @@ function canvasSetup() {
 }
 
 function tilesArrayInit() {
-	tiles = [];	
+	tiles = [];
 	for(var i = 0; i<fieldsInRow; i++)
 		tiles[i] = [];
 	for(var i = 0; i<fieldsInRow; i++) {
