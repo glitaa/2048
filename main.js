@@ -294,6 +294,9 @@ function updateVariables() {
 
 	margin = maxLength/20;
 	innerMargin = maxLength/60;
+
+	boardX = canvas.width / 2 - boardLength / 2;
+	boardY = canvas.height / 2 - boardLength / 2;
 }
 
 function drawBackground() {
