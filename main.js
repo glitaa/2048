@@ -306,7 +306,7 @@ function drawBackground() {
 
 function drawBoard() {
 	canvasCtx.fillStyle = "grey";
-	canvasCtx.fillRect(0 + margin, 0 + margin, maxLength - 2 * margin, maxLength - 2 * margin);
+	canvasCtx.fillRect(boardX, boardY, maxLength - 2 * margin, maxLength - 2 * margin);
 	boardLength = maxLength - (2 * margin);
 }
 
@@ -315,7 +315,7 @@ function drawFields() {
 	canvasCtx.fillStyle = backgroundColor;
 	for (var i = 0; i < fieldsInRow; i++) {
 	for (var j = 0; j < fieldsInRow; j++) {
-			canvasCtx.fillRect(margin + innerMargin + i * (fieldLength), margin + innerMargin + j * (fieldLength), fieldLength - innerMargin, fieldLength - innerMargin);
+			canvasCtx.fillRect(boardX + innerMargin + i * (fieldLength), boardY + innerMargin + j * (fieldLength), fieldLength - innerMargin, fieldLength - innerMargin);
 	}}
 }
 
