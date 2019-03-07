@@ -87,7 +87,7 @@ class Tile {
 				break;
 		}
 		canvasCtx.fillRect(boardX + innerMargin + this.x * fieldLength + this.xSpeed, boardY + innerMargin + this.y * fieldLength + this.ySpeed, fieldLength - innerMargin, fieldLength - innerMargin);
-		canvasCtx.font = 56 / this.value.toString().length + "px Verdana";
+		canvasCtx.font = 56 / this.value.toString().length * (maxLength/600) + "px Verdana";
 		canvasCtx.fillStyle = "black";
 		canvasCtx.textAlign = "center";
 		canvasCtx.fillText(this.value, boardX + innerMargin + this.x * fieldLength + (fieldLength - innerMargin) / 2 + this.xSpeed, boardY + innerMargin + this.y * fieldLength + (fieldLength - innerMargin) / 2 + maxLength / 36 + this.ySpeed);
