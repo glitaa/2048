@@ -26,8 +26,8 @@ window.onload = function() {
 function update() {
 	updateVariables();
 
-	drawEverything(); //drawing function
 	moveEverything(); //moving function
+	drawEverything(); //drawing function
 
 	/*for (var i = 0; i<fieldsInRow; i++) {
 	for (var j = 0; j<fieldsInRow; j++) {
