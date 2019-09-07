@@ -193,10 +193,10 @@ function drawEverything() {
 }
 
 function drawNewTile(numberOfTiles) {
-	for(var i = 0; i<numberOfTiles; i++) {
+	for (var i = 0; i < numberOfTiles; i++) {
 		let x = Math.floor(Math.random() * fieldsInRow);
 		let y = Math.floor(Math.random() * fieldsInRow);
-		while(!(tiles[x][y].getValue()==0)) {
+		while (!(tiles[x][y].getValue() == 0)) {
 			x = Math.floor(Math.random() * fieldsInRow);
 			y = Math.floor(Math.random() * fieldsInRow);
 		}
