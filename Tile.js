@@ -99,4 +99,9 @@ class Tile {
 		this.clear();
 		somethingChanged = true;
 	}
+	merge(to) {
+		to.setValue(this.getValue() * 2);
+		this.clear();
+		somethingChanged = true;
+	}
 }
