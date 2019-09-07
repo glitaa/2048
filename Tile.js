@@ -92,4 +92,11 @@ class Tile {
 		canvasCtx.textAlign = "center";
 		canvasCtx.fillText(this.value, boardX + innerMargin + this.x * fieldLength + (fieldLength - innerMargin) / 2 + this.xSpeed, boardY + innerMargin + this.y * fieldLength + (fieldLength - innerMargin) / 2 + maxLength / 30 + this.ySpeed);
 	}
+	move(toX, toY) {
+		tiles[toX][toY].setValue(this.getValue());
+		tiles[toX][toY].setX(toX);
+		tiles[toX][toY].setY(toY);
+		this.clear();
+		somethingChanged = true;
+	}
 }
