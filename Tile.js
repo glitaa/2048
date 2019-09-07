@@ -71,19 +71,19 @@ class Tile {
 				canvasCtx.fillStyle = "#ff901a";
 				break;
 			case 16:
-				canvasCtx.fillStyle = "#e67700";
+				canvasCtx.fillStyle = "#ff7100";
 				break;
 			case 32:
-				canvasCtx.fillStyle = "#ff8533";
-				break;
-			case 64:
 				canvasCtx.fillStyle = "#ff6600";
 				break;
+			case 64:
+				canvasCtx.fillStyle = "#ff5c00";
+				break;
 			case 128:
-				canvasCtx.fillStyle = "#ffad33";
+				canvasCtx.fillStyle = "#ff5000";
 				break;
 			default:
-				canvasCtx.fillStyle = "brown";
+				canvasCtx.fillStyle = "#f46300";
 				break;
 		}
 		canvasCtx.fillRect(boardX + innerMargin + this.x * fieldLength + this.xSpeed, boardY + innerMargin + this.y * fieldLength + this.ySpeed, fieldLength - innerMargin, fieldLength - innerMargin);
