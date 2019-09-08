@@ -298,6 +298,9 @@ function updateVariables() {
 	boardX = canvas.width / 2 - boardLength / 2;
 	boardY = canvas.height / 2 - boardLength / 2;
 
+	boardLength = maxLength - (2 * margin);
+	fieldLength = (boardLength - innerMargin) / fieldsInRow;
+
 	speed = fieldLength / speedDivider;
 }
 
@@ -309,11 +312,9 @@ function drawBackground() {
 function drawBoard() {
 	canvasCtx.fillStyle = "grey";
 	canvasCtx.fillRect(boardX, boardY, maxLength - 2 * margin, maxLength - 2 * margin);
-	boardLength = maxLength - (2 * margin);
 }
 
 function drawFields() {
-	fieldLength = (boardLength - innerMargin) / fieldsInRow;
 	canvasCtx.fillStyle = backgroundColor;
 	for (var i = 0; i < fieldsInRow; i++) {
 	for (var j = 0; j < fieldsInRow; j++) {
