@@ -39,7 +39,6 @@ function update() {
 }
 
 function moveEverything() {
-	updateTileSpeed();
 	if (!movedOnce) {
 		moveTiles();
 
@@ -267,54 +266,6 @@ function drawNewTile(numberOfTiles) {
 		tiles[x][y].setX(x);
 		tiles[x][y].setY(y);
 		tiles[x][y].setValue(Math.random() < 0.8 ? 2 : 4);
-	}
-}
-
-function updateTileSpeed() {
-	subtractFromXSpeedIfIsNegative();
-	addToXSpeedIfIsPositive();
-	subtractFromYSpeedIfIsNegative();
-	addToYSpeedIfIsPositive();
-}
-
-function subtractFromXSpeedIfIsNegative() {
-	for (var i = 0; i < fieldsInRow; i++) {
-		for (var j = 0; j < fieldsInRow; j++) {
-			if (tiles[i][j].getXSpeed() < 0)
-				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed() - fieldLength / speed);
-		}
-	}
-}
-
-function addToXSpeedIfIsPositive() {
-	for (var i = 0; i < fieldsInRow; i++) {
-		for (var j = 0; j < fieldsInRow; j++) {
-			if (tiles[i][j].getXSpeed() > 0)
-				tiles[i][j].setXSpeed(tiles[i][j].getXSpeed() + fieldLength / speed);
-		}
-	}
-}
-
-function subtractFromYSpeedIfIsNegative() {
-	for (var i = 0; i < fieldsInRow; i++) {
-		for (var j = 0; j < fieldsInRow; j++) {
-			if (tiles[i][j].getYSpeed() < 0)
-				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed() - fieldLength / speed);
-		}
-	}
-}
-
-function addToYSpeedIfIsPositive() {
-	for (var i = 0; i < fieldsInRow; i++) {
-		for (var j = 0; j < fieldsInRow; j++) {
-			if (tiles[i][j].getYSpeed() < 0)
-				tiles[i][j].setYSpeed(tiles[i][j].getYSpeed() + fieldLength / speed);
-		}
-	}
-}
-
-			}
-		}
 	}
 }
 
