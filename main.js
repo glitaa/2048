@@ -30,7 +30,16 @@ function update() {
 
 	moveEverything();
 	drawEverything();
+}
 
+function drawEverything() {
+	drawBackground();
+
+	drawBoard();
+
+	drawFields();
+
+	drawTiles();
 }
 
 function moveEverything() {
@@ -229,15 +238,6 @@ function mergeTiles() {
 	}
 }
 
-function drawEverything() {
-	drawBackground();
-
-	drawBoard();
-
-	drawFields();
-
-	drawTiles();
-}
 function areTilesInMove() {
 	tilesAreInMove = false;
 	for (var i = 0; i < fieldsInRow; i++) {
