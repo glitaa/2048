@@ -31,11 +31,6 @@ function update() {
 	moveEverything();
 	drawEverything();
 
-	/*for (var i = 0; i<fieldsInRow; i++) {
-	for (var j = 0; j<fieldsInRow; j++) {
-		console.log("x, y: "+tiles[i][j].getX()+", "+tiles[i][j].getY()+"; i, j: "+i+", "+j+"; value: "+tiles[i][j].getValue()+"; xSpeed: "+tiles[i][j].getXSpeed()+"; ySpeed: "+tiles[i][j].getYSpeed());
-	}}
-	console.log("\n");*/
 }
 
 function moveEverything() {
