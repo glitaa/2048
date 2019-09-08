@@ -28,8 +28,8 @@ window.onload = function() {
 function update() {
 	updateVariables();
 
-	moveEverything(); //moving function
-	drawEverything(); //drawing function
+	moveEverything();
+	drawEverything();
 
 	/*for (var i = 0; i<fieldsInRow; i++) {
 	for (var j = 0; j<fieldsInRow; j++) {
