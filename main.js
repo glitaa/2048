@@ -4,8 +4,9 @@ var maxLength;
 var fieldsInRow = 4;
 var fieldLength;
 var tiles;
-var speed = 4;
 var direction = "none";
+var speed;
+var speedDivider = 3.5;
 var somethingChanged;
 var movedOnce, merged, movedTwice;
 var backgroundColor = "#fff2e6";
@@ -350,6 +351,8 @@ function updateVariables() {
 
 	boardX = canvas.width / 2 - boardLength / 2;
 	boardY = canvas.height / 2 - boardLength / 2;
+
+	speed = fieldLength / speedDivider;
 }
 
 function drawBackground() {
