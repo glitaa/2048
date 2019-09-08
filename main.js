@@ -310,7 +310,7 @@ function drawBackground() {
 }
 
 function drawBoard() {
-	canvasCtx.fillStyle = "grey";
+	canvasCtx.fillStyle = "#757575";
 	canvasCtx.fillRect(boardX, boardY, maxLength - 2 * margin, maxLength - 2 * margin);
 }
 
