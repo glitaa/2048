@@ -12,6 +12,7 @@ var movedOnce, merged, movedTwice;
 var backgroundColor = "#fff2e6";
 var boardLength;
 var tilesAreInMove;
+var intervalID;
 
 window.onload = function() {
 	canvasSetup();
@@ -281,7 +282,7 @@ function tilesArrayInit() {
 
 function setAndInitInterval() {
 	var fps = 60;
-	setInterval(update, 1000 / fps);
+	intervalID = setInterval(update, 1000 / fps);
 }
 
 function updateVariables() {
